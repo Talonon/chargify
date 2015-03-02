@@ -1,13 +1,17 @@
 {
-    "name": "johannez/chargify",
+    "name": "talonon/chargify",
     "description": "Interact with the Chargify API v1",
     "license": "MIT",
     "type": "library",
-    "homepage": "https://github.com/johannez/chargify",
+    "homepage": "https://github.com/talonon/chargify",
     "authors": [
         {
             "name": "Johannes",
             "email": "mail@2tabs.com"
+        },
+        {
+            "name": "Andy Muth",
+            "email": "andy@griffonco.com"
         }
     ],
     "require": {

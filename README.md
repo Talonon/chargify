@@ -13,6 +13,7 @@ the [Chargify API](http://docs.chargify.com/api-introduction) version 1.
 - Coupons
 - Components
 - Transactions
+- Subscription Metadata
 
 ### Roadmap
 
@@ -27,7 +28,7 @@ the composer.json requirement section.
 ```json
 {
   "require": {
-    "johannez/chargify": "dev-master"
+    "talonon/chargify": "dev-master"
   }
 }
 ```
