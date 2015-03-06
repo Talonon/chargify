@@ -4,68 +4,64 @@ namespace Chargify\Controller;
 
 use \Chargify\Resource\TransactionResource as Resource;
 
-class Transaction extends AbstractController
-{
+class Transaction extends AbstractController {
 
-    /**
-     * Return all transactions.
-     *
-     * @return    List of chargify transaction objects.
-     */
-    public function getAll()
-    {
-        $transactions = array();
-        // Get the raw data from Chargify.
-        $response = $this->request('transactions');
+  /**
+   * Return all transactions.
+   *
+   * @return  List of chargify transaction objects.
+   */
+  public function getAll() {
+    $transactions = array();
+    // Get the raw data from Chargify.
+    $response = $this->request('transactions');
 
-        // Convert the raw data into resource objects.
-        foreach ($response as $data ) {
-            if (is_array($data) && is_array($data['transaction'])) {
-                $transactions[] = new Resource($data['transaction']);
-            }
-        }
-
-        return $transactions;
+    // Convert the raw data into resource objects.
+    foreach ($response as $data ) {
+      if (is_array($data) && is_array($data['transaction'])) {
+        $transactions[] = new Resource($data['transaction']);
+      }
     }
 
-    /**
-     * Returns a chargify transaction by ID.
-     *
-     * @param    $id The numeric id.
-     * @return    A chargify transaction object.
-     */
-    public function getById($id)
-    {
-        $transaction = null;
+    return $transactions;
+  }
 
-        $response = $this->request('transactions/' . $id);
+  /**
+   * Returns a chargify transaction by ID.
+   *
+   * @param  $id The numeric id.
+   * @return  A chargify transaction object.
+   */
+  public function getById($id) {
+    $transaction = null;
 
-        if (is_array($response) && is_array($response['transaction'])) {
-            $transaction = new Resource($response['transaction']);
-        }
+    $response = $this->request('transactions/' . $id);
 
-        return $transaction;
+    if (is_array($response) && is_array($response['transaction'])) {
+      $transaction = new Resource($response['transaction']);
     }
 
-    /**
-     * Get all transactions for a specific subscription.
-     *
-     * @param    $id The numeric subscription id.
-     * @return    List of chargify product objects.
-     */
-    public function getBySubscription($id)
-    {
-        $transactions = array();
+    return $transaction;
+  }
 
-        $response = $this->request('subscriptions/' . $id . '/transactions');
+  /**
+   * Get all transactions for a specific subscription.
+   *
+   * @param  $id The numeric subscription id.
+   * @return  List of chargify product objects.
+   */
+  public function getBySubscription($id) {
+    $transactions = array();
 
-        foreach ($response as $data ) {
-            if (is_array($data) && is_array($data['transaction'])) {
-                $transactions[] = new Resource($data['transaction']);
-            }
-        }
+    $response = $this->request('subscriptions/' . $id . '/transactions');
 
-        return $transactions;
+    foreach ($response as $data ) {
+      if (is_array($data) && is_array($data['transaction'])) {
+        $transactions[] = new Resource($data['transaction']);
+      }
     }
+
+    return $transactions;
+  }
 
 }
