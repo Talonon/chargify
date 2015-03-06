@@ -14,6 +14,7 @@ the [Chargify API](http://docs.chargify.com/api-introduction) version 1.
 - Components
 - Transactions
 - Subscription Metadata
+- Allocations
 
 ### Roadmap
 
