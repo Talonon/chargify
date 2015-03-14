@@ -40,7 +40,11 @@
       $response = $this->request($this->resource . '/' . $id . '/metadata');
 
       if (is_array($response) && is_array($response['metadata'])) {
-        $metadata = new Resource($response['metadata']);
+        foreach ($response['metadata'] as $data) {
+          if (is_array($data)) {
+            $metadata[] = new Resource($data);
+          }
+        }
       }
 
       return $metadata;
